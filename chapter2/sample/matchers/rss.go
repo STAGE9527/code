@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"regexp"
 
-	"github.com/goinaction/code/chapter2/sample/search"
+	"../search"
 )
 
 type (
@@ -136,5 +136,7 @@ func (m rssMatcher) retrieve(feed *search.Feed) (*rssDocument, error) {
 	// We don't need to check for errors, the caller can do this.
 	var document rssDocument
 	err = xml.NewDecoder(resp.Body).Decode(&document)
+	//fmt.Println("================")
+	//fmt.Printf("%#v\n",&document)
 	return &document, err
 }

@@ -3,9 +3,12 @@ package search
 import (
 	"encoding/json"
 	"os"
+	"path/filepath"
 )
 
 const dataFile = "data/data.json"
+
+const fileDir = "data"
 
 // Feed contains information we need to process a feed.
 type Feed struct {
@@ -17,7 +20,8 @@ type Feed struct {
 // RetrieveFeeds reads and unmarshals the feed data file.
 func RetrieveFeeds() ([]*Feed, error) {
 	// Open the file.
-	file, err := os.Open(dataFile)
+	cfgfile := filepath.Join(fileDir, "data.json")
+	file, err := os.Open(cfgfile)
 	if err != nil {
 		return nil, err
 	}

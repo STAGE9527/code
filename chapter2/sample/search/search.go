@@ -29,6 +29,7 @@ func Run(searchTerm string) {
 	// Launch a goroutine for each feed to find the results.
 	for _, feed := range feeds {
 		// Retrieve a matcher for the search.
+		//fmt.Println(feeds)
 		matcher, exists := matchers[feed.Type]
 		if !exists {
 			matcher = matchers["default"]
